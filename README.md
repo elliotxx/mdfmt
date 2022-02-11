@@ -6,7 +6,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/elliotxx/mdfmt.svg)](https://pkg.go.dev/github.com/elliotxx/mdfmt)
 [![Coverage Status](https://coveralls.io/repos/github/elliotxx/mdfmt/badge.svg)](https://coveralls.io/github/elliotxx/mdfmt)
 
-> Like gofmt, but for Markdown. Based on CommonMark.
+> A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.
 
 CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
 

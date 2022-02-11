@@ -13,8 +13,8 @@ import (
 )
 
 var (
-	cmdShort   = i18n.T(`A Markdown formatter based on CommonMark`)
-	cmdLong    = templates.LongDesc(i18n.T(`Like gofmt, but for Markdown. Based on CommonMark.`))
+	cmdShort   = i18n.T(`A Markdown formatter that follow the CommonMark`)
+	cmdLong    = templates.LongDesc(i18n.T(`A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.`))
 	cmdExample = templates.Examples(i18n.T(`
 		# Show version info
 		mdfmt -w README.md
