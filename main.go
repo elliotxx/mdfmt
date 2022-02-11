@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io/fs"
 	"os"
+	"path/filepath"
 
-	"github.com/88250/lute"
+	"github.com/elliotxx/mdfmt/pkg/md"
 	"github.com/elliotxx/mdfmt/pkg/version"
 	"github.com/spf13/cobra"
 	"k8s.io/kubectl/pkg/util/i18n"
@@ -39,36 +40,27 @@ func configureCLI() *cobra.Command {
 		Long:         cmdLong,
 		Example:      cmdExample,
 		SilenceUsage: true,
-		RunE: func(cmd *cobra.Command, args []string) (err error) {
+		RunE: func(_ *cobra.Command, args []string) (err error) {
 			// Show version info
 			if o.ShowVersion {
 				fmt.Println(version.ReleaseVersion())
 				return nil
 			}
 
-			// Read
-			var markdownContent []byte
+			// Process input
 			if len(args) == 0 {
-				markdownContent, err = ioutil.ReadAll(os.Stdin)
-			} else {
-				markdownContent, err = ioutil.ReadFile(args[0])
+				return md.FormatMarkdown(os.Stdin, os.Stdout)
 			}
-			if err != nil {
-				return err
-			}
-
-			// Format
-			luteEngine := lute.New() // 默认已经启用 GFM 支持以及中文语境优化
-			formatContent := luteEngine.FormatStr("md", string(markdownContent))
-
-			// Output
-			if o.Write {
-				err := ioutil.WriteFile(args[0], []byte(formatContent), 0o644)
+			for _, p := range args {
+				err = filepath.WalkDir(p, func(path string, d fs.DirEntry, _ error) error {
+					if !d.IsDir() && md.IsMarkdownFile(path) {
+						return md.ProcessMDFile(path, o.Write)
+					}
+					return nil
+				})
 				if err != nil {
 					return err
 				}
-			} else {
-				fmt.Println(formatContent)
 			}
 
 			return nil
