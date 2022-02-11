@@ -18,22 +18,31 @@ go install github.com/elliotxx/mdfmt@latest
 
 ## Usage
 
-All targets:
-
 ```
-$ make help
-help                           This help message :)
-test                           Run the tests
-cover                          Generates coverage report
-cover-html                     Generates coverage report and displays it in the browser
-format                         Format source code
-lint                           Lint, will not fix but sets exit code on error
-lint-fix                       Lint, will try to fix errors and modify code
-doc                            Start the documentation server with godoc
-gen-version                    Update version
-clean                          Clean build bundles
-build-all                      Build all platforms
-build-darwin                   Build for MacOS
-build-linux                    Build for Linux
-build-windows                  Build for Windows
+$ mdfmt -h
+A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.
+
+Usage:
+  mdfmt [flags] [path ...]
+
+Examples:
+  # Format markdown file, and write to stdout
+  mdfmt README.md
+  
+  # Format and rewrite markdown file
+  mdfmt -w README.md
+  
+  # Format and rewrite markdown file and directory
+  mdfmt -w README.md testdir/
+  
+  # Format stdin to stdout
+  cat README.md | mdfmt
+  
+  # Show version info
+  mdfmt -V
+
+Flags:
+  -h, --help      help for mdfmt
+  -V, --version   show version info
+  -w, --write     write result to (source) file instead of stdout
 ```

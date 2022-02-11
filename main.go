@@ -17,8 +17,20 @@ var (
 	cmdShort   = i18n.T(`A Markdown formatter that follow the CommonMark`)
 	cmdLong    = templates.LongDesc(i18n.T(`A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.`))
 	cmdExample = templates.Examples(i18n.T(`
-		# Show version info
+		# Format markdown file, and write to stdout
+		mdfmt README.md
+
+		# Format and rewrite markdown file
 		mdfmt -w README.md
+
+		# Format and rewrite markdown file and directory
+		mdfmt -w README.md testdir/
+
+		# Format stdin to stdout
+		cat README.md | mdfmt
+
+		# Show version info
+		mdfmt -V
 		`))
 )
 
@@ -67,7 +79,7 @@ func configureCLI() *cobra.Command {
 		},
 	}
 
-	rootCmd.Flags().BoolVarP(&o.ShowVersion, "version", "V", false, "Show version info")
+	rootCmd.Flags().BoolVarP(&o.ShowVersion, "version", "V", false, "show version info")
 	rootCmd.Flags().BoolVarP(&o.Write, "write", "w", false, "write result to (source) file instead of stdout")
 
 	return rootCmd
