@@ -8,8 +8,16 @@
 
 > Like gofmt, but for Markdown. Based on CommonMark.
 
+## Intallation
+
+```
+go install github.com/elliotxx/mdfmt@latest
+```
+
 ## Usage
+
 All targets:
+
 ```
 $ make help
 help                           This help message :)
