@@ -39,28 +39,29 @@ func configureCLI() *cobra.Command {
 		Long:         cmdLong,
 		Example:      cmdExample,
 		SilenceUsage: true,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		RunE: func(cmd *cobra.Command, args []string) (err error) {
 			// Show version info
 			if o.ShowVersion {
 				fmt.Println(version.ReleaseVersion())
 				return nil
 			}
 
+			// Read
+			var markdownContent []byte
 			if len(args) == 0 {
-				// if err := processFile("<standard input>", os.Stdin, os.Stdout, true); err != nil {
-				// 	report(err)
-				// }
-				return nil
+				markdownContent, err = ioutil.ReadAll(os.Stdin)
+			} else {
+				markdownContent, err = ioutil.ReadFile(args[0])
 			}
-
-			content, err := ioutil.ReadFile(args[0])
 			if err != nil {
 				return err
 			}
 
+			// Format
 			luteEngine := lute.New() // 默认已经启用 GFM 支持以及中文语境优化
-			formatContent := luteEngine.FormatStr("md", string(content))
+			formatContent := luteEngine.FormatStr("md", string(markdownContent))
 
+			// Output
 			if o.Write {
 				err := ioutil.WriteFile(args[0], []byte(formatContent), 0o644)
 				if err != nil {
