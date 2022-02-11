@@ -34,12 +34,12 @@ func NewMainOptions() *Options {
 func configureCLI() *cobra.Command {
 	o := NewMainOptions()
 	rootCmd := &cobra.Command{
-		Use:          "mdfmt",
+		Use:          "mdfmt [flags] [path ...]",
 		Short:        cmdShort,
 		Long:         cmdLong,
 		Example:      cmdExample,
 		SilenceUsage: true,
-		RunE: func(cmd *cobra.Command, args []string) (err error) {
+		RunE: func(cmd *cobra.Command, args []string) error {
 			// Show version info
 			if o.ShowVersion {
 				fmt.Println(version.ReleaseVersion())
