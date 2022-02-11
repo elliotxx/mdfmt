@@ -8,6 +8,8 @@
 
 > Like gofmt, but for Markdown. Based on CommonMark.
 
+CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
+
 ## Intallation
 
 ```
