@@ -32,10 +32,12 @@ package version
 func init() {
 	info = &Info{
 		ReleaseVersion: %q,
-		GitLatestTag:   %q,
-		GitCommit:      %q,
-		GitTreeState:   %q,
-		BuildInfo: RuntimeInfo{
+		GitInfo: &GitInfo{
+			LatestTag:   %q,
+			Commit:      %q,
+			TreeState:   %q,
+		},
+		BuildInfo: &BuildInfo{
 			GoVersion: %q,
 			GOOS:      %q,
 			GOARCH:    %q,
@@ -47,9 +49,9 @@ func init() {
 }
 `,
 		v.ReleaseVersion,
-		v.GitLatestTag,
-		v.GitCommit,
-		v.GitTreeState,
+		v.GitInfo.LatestTag,
+		v.GitInfo.Commit,
+		v.GitInfo.TreeState,
 		v.BuildInfo.GoVersion,
 		v.BuildInfo.GOOS,
 		v.BuildInfo.GOARCH,

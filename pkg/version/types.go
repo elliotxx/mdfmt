@@ -18,8 +18,12 @@ import (
 
 var info = &Info{
 	ReleaseVersion: "default-version",
-	GitLatestTag:   "default-tag",
-	BuildInfo: RuntimeInfo{
+	GitInfo: &GitInfo{
+		LatestTag: "default-tag",
+		Commit:    "default-commit",
+		TreeState: "default-tree-state",
+	},
+	BuildInfo: &BuildInfo{
 		GoVersion: runtime.Version(),
 		GOOS:      runtime.GOOS,
 		GOARCH:    runtime.GOARCH,
@@ -34,19 +38,26 @@ var info = &Info{
 //
 //    ReleaseVersion - "vX.Y.Z-00000000" used to indicate the last release version,
 // 		  containing GitVersion and GitCommitShort.
+type Info struct {
+	ReleaseVersion string     `json:"releaseVersion" yaml:"releaseVersion"` // Such as "v1.2.3-3836f877"
+	GitInfo        *GitInfo   `json:"gitInfo,omitempty" yaml:"gitInfo,omitempty"`
+	BuildInfo      *BuildInfo `json:"buildInfo,omitempty" yaml:"buildInfo,omitempty"`
+}
+
+// GitInfo contains git information.
+// following attributes:
+//
 //    GitLatestTag - "vX.Y.Z" used to indicate the last git tag.
 //    GitCommit - The git commit id corresponding to this source code.
 //    GitTreeState - "clean" indicates no changes since the git commit id
 //        "dirty" indicates source code changes after the git commit id
-type Info struct {
-	ReleaseVersion string      `json:"releaseVersion" yaml:"releaseVersion"`                 // Such as "v1.2.3-3836f877"
-	GitLatestTag   string      `json:"gitLatestTag" yaml:"gitLatestTag"`                     // Such as "v1.2.3"
-	GitCommit      string      `json:"gitCommit,omitempty" yaml:"gitCommit,omitempty"`       // Such as "3836f8770ab8f488356b2129f42f2ae5c1134bb0"
-	GitTreeState   string      `json:"gitTreeState,omitempty" yaml:"gitTreeState,omitempty"` // Such as "clean", "dirty"
-	BuildInfo      RuntimeInfo `json:"buildInfo,omitempty" yaml:"buildInfo,omitempty"`
+type GitInfo struct {
+	LatestTag string `json:"latestTag" yaml:"latestTag"`                     // Such as "v1.2.3"
+	Commit    string `json:"commit,omitempty" yaml:"commit,omitempty"`       // Such as "3836f8770ab8f488356b2129f42f2ae5c1134bb0"
+	TreeState string `json:"treeState,omitempty" yaml:"treeState,omitempty"` // Such as "clean", "dirty"
 }
 
-type RuntimeInfo struct {
+type BuildInfo struct {
 	GoVersion string `json:"goVersion,omitempty" yaml:"goVersion,omitempty"`
 	GOOS      string `json:"GOOS,omitempty" yaml:"GOOS,omitempty"`
 	GOARCH    string `json:"GOARCH,omitempty" yaml:"GOARCH,omitempty"`
@@ -109,10 +120,12 @@ func NewInfo() (*Info, error) {
 
 	return &Info{
 		ReleaseVersion: releaseVersion,
-		GitLatestTag:   gitVersion.Original(),
-		GitCommit:      headHash,
-		GitTreeState:   gitTreeState,
-		BuildInfo: RuntimeInfo{
+		GitInfo: &GitInfo{
+			LatestTag: gitVersion.Original(),
+			Commit:    headHash,
+			TreeState: gitTreeState,
+		},
+		BuildInfo: &BuildInfo{
 			GoVersion: runtime.Version(),
 			GOOS:      runtime.GOOS,
 			GOARCH:    runtime.GOARCH,
@@ -128,7 +141,7 @@ func (v *Info) String() string {
 }
 
 func (v *Info) ShortString() string {
-	return fmt.Sprintf("%s; git: %s; build time: %s", v.ReleaseVersion, v.GitCommit, v.BuildInfo.BuildTime)
+	return fmt.Sprintf("%s; git: %s; build time: %s", v.ReleaseVersion, v.GitInfo.Commit, v.BuildInfo.BuildTime)
 }
 
 func (v *Info) JSON() string {
