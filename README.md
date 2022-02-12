@@ -13,7 +13,7 @@ CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli
 ## Intallation
 
 ```
-go install github.com/elliotxx/mdfmt/cmd@latest
+go install github.com/elliotxx/mdfmt@latest
 ```
 
 ## Usage
