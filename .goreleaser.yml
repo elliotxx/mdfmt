@@ -35,7 +35,7 @@ release:
   github:
     owner: elliotxx
     name: mdfmt
-  draft: true
+  draft: false
   prerelease: auto
   discussion_category_name: General
   footer: |
