@@ -9,14 +9,14 @@ import (
 )
 
 func main() {
-	versionInfo, err := version.NewVersionInfo()
+	versionInfo, err := version.NewInfo()
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	data := makeUpdateVersionGoFile(versionInfo)
 
-	err = ioutil.WriteFile("../z_update_version.go", []byte(data), 0o600)
+	err = ioutil.WriteFile("../z_update_version.go", []byte(data), 0o666)
 	if err != nil {
 		log.Fatalf("ioutil.WriteFile: err = %v", err)
 	}
@@ -30,31 +30,31 @@ func makeUpdateVersionGoFile(v *version.Info) string {
 package version
 
 func init() {
-	versionInfo = &Info{
+	info = &Info{
 		ReleaseVersion: %q,
-		GitVersion:     %q,
+		GitLatestTag:   %q,
 		GitCommit:      %q,
 		GitTreeState:   %q,
-		BuildTime:      %q,
-		Runtime: RuntimeInfo{
+		BuildInfo: RuntimeInfo{
 			GoVersion: %q,
 			GOOS:      %q,
 			GOARCH:    %q,
 			NumCPU:    %d,
 			Compiler:  %q,
+			BuildTime: %q,
 		},
 	}
 }
 `,
 		v.ReleaseVersion,
-		v.GitVersion,
+		v.GitLatestTag,
 		v.GitCommit,
 		v.GitTreeState,
-		v.BuildTime,
-		v.Runtime.GoVersion,
-		v.Runtime.GOOS,
-		v.Runtime.GOARCH,
-		v.Runtime.NumCPU,
-		v.Runtime.Compiler,
+		v.BuildInfo.GoVersion,
+		v.BuildInfo.GOOS,
+		v.BuildInfo.GOARCH,
+		v.BuildInfo.NumCPU,
+		v.BuildInfo.Compiler,
+		v.BuildInfo.BuildTime,
 	)
 }

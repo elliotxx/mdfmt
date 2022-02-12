@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/88250/lute v1.7.3
 	github.com/alecthomas/chroma v0.10.0 // indirect
+	github.com/elliotxx/gulu v0.3.0
 	github.com/go-logr/logr v1.2.1 // indirect
 	github.com/gopherjs/gopherjs v0.0.0-20220104163920-15ed2e8cf2bd // indirect
 	github.com/hashicorp/go-version v1.3.0
