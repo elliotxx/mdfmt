@@ -38,10 +38,6 @@ release:
   draft: true
   prerelease: auto
   discussion_category_name: General
-  header: |
-    ## Major changes
-    - Item 1
-    - Item 2
   footer: |
     ## Thanks!
 
