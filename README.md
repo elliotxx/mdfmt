@@ -42,13 +42,16 @@ Usage:
   mdfmt [flags] [path ...]
 
 Examples:
-  # Format markdown file, and write to stdout
+  # Format specified Markdown file, and write to stdout
   mdfmt README.md
   
-  # Format and rewrite markdown file
+  # Format and rewrite specified Markdown file
   mdfmt -w README.md
   
-  # Format and rewrite markdown file and directory
+  # Format and rewrite all Markdown file in current directory
+  mdfmt -w *.md
+  
+  # Format and rewrite Markdown file and directory
   mdfmt -w README.md testdir/
   
   # Format stdin to stdout

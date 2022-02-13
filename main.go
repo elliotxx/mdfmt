@@ -17,13 +17,16 @@ var (
 	cmdShort   = i18n.T(`A Markdown formatter that follow the CommonMark`)
 	cmdLong    = templates.LongDesc(i18n.T(`A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.`))
 	cmdExample = templates.Examples(i18n.T(`
-		# Format markdown file, and write to stdout
+		# Format specified Markdown file, and write to stdout
 		mdfmt README.md
 
-		# Format and rewrite markdown file
+		# Format and rewrite specified Markdown file
 		mdfmt -w README.md
 
-		# Format and rewrite markdown file and directory
+		# Format and rewrite all Markdown file in current directory
+		mdfmt -w *.md
+
+		# Format and rewrite Markdown file and directory
 		mdfmt -w README.md testdir/
 
 		# Format stdin to stdout
