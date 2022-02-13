@@ -8,8 +8,6 @@
 
 > A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.
 
-CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
-
 ## Intallation
 
 ```
@@ -46,3 +44,9 @@ Flags:
   -V, --version   show version info
   -w, --write     write result to (source) file instead of stdout
 ```
+
+## Thanks
+
+* CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
+* The specification follows [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
+* The Markdown engine uses [lute](https://github.com/88250/lute), cool!
