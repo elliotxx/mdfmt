@@ -36,8 +36,6 @@ release:
     owner: elliotxx
     name: mdfmt
   draft: false
-  prerelease: auto
-  discussion_category_name: General
   footer: |
     ## Thanks!
 
