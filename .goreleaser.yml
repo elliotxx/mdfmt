@@ -69,3 +69,26 @@ dockers:
   - "--label=org.opencontainers.image.source={{.GitURL}}"
   - "--platform=linux/arm64"
   goarch: arm64
+
+brews:
+  - tap:
+      owner: elliotxx
+      name: homebrew-tap
+      # token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+
+    url_template: "https://github.com/elliotxx/mdfmt/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    download_strategy: CurlDownloadStrategy
+
+    # Git author used to commit to the repository.
+    # Defaults are shown.
+    commit_author:
+      name: GoReleaser Bot
+      email: goreleaser@carlosbecker.com
+
+    folder: HomebrewFormula
+    homepage: "https://github.com/elliotxx/mdfmt"
+    description: "A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown."
+    license: "MIT"
+    skip_upload: false
+    test: |
+      system "#{bin}/mdfmt -V"
