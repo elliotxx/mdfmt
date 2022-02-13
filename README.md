@@ -10,6 +10,13 @@
 
 ## Intallation
 
+### Homebrew
+The elliotxx/tap has macOS and GNU/Linux pre-built binaries available:
+```
+brew install elliotxx/tap/mdfmt
+```
+
+### Build from Source
 ```
 go install github.com/elliotxx/mdfmt@latest
 ```
