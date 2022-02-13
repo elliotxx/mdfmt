@@ -11,15 +11,22 @@
 ## Intallation
 
 ### Homebrew
-The elliotxx/tap has macOS and GNU/Linux pre-built binaries available:
+
+The `elliotxx/tap` has macOS and GNU/Linux pre-built binaries available:
+
 ```
 brew install elliotxx/tap/mdfmt
 ```
 
 ### Build from Source
+
+Starting with Go 1.17, you can install `mdfmt` from source using go install:
+
 ```
 go install github.com/elliotxx/mdfmt@latest
 ```
+
+*NOTE*: This will install `mdfmt` based on the latest available code base. Even though the goal is that the latest commit on the main branch should always be a stable and usable version, this is not the recommended way to install and use `mdfmt`. The version output will show `mdfmt` version (default-version) for go install based builds.
 
 ## Usage
 
