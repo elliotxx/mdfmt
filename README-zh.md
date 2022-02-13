@@ -1,4 +1,4 @@
-## Introduction
+## 简介
 
 [![GitHub release](https://img.shields.io/github/release/elliotxx/mdfmt.svg)](https://github.com/elliotxx/mdfmt/releases)
 [![Github All Releases](https://img.shields.io/github/downloads/elliotxx/mdfmt/total.svg)](https://github.com/elliotxx/mdfmt/releases)
@@ -6,33 +6,33 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/elliotxx/mdfmt.svg)](https://pkg.go.dev/github.com/elliotxx/mdfmt)
 [![Coverage Status](https://coveralls.io/repos/github/elliotxx/mdfmt/badge.svg)](https://coveralls.io/github/elliotxx/mdfmt)
 
-> A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.
+> 一款 Markdown 格式化工具，和 gofmt 比较类似，不过格式化的对象是 Markdown 文本
 
-## Language
+## 语言
 
 [English](https://github.com/elliotxx/mdfmt/blob/master/README.md) | [简体中文](https://github.com/elliotxx/mdfmt/blob/master/README-zh.md)
 
-## Intallation
+## 安装
 
 ### Homebrew
 
-The `elliotxx/tap` has macOS and GNU/Linux pre-built binaries available:
+`elliotxx/tap` 有 MacOS 和 GNU/Linux 的预编译二进制版本可用：
 
 ```
 brew install elliotxx/tap/mdfmt
 ```
 
-### Build from Source
+### 从源码构建
 
-Starting with Go 1.17, you can install `mdfmt` from source using go install:
+使用 Go 1.17+ 版本，你可以通过 `go install` 直接从源码安装 `mdfmt`：
 
 ```
 go install github.com/elliotxx/mdfmt@latest
 ```
 
-*NOTE*: This will install `mdfmt` based on the latest available code base. Even though the goal is that the latest commit on the main branch should always be a stable and usable version, this is not the recommended way to install and use `mdfmt`. The version output will show `mdfmt` version (default-version) for go install based builds.
+*注意*: 你将基于代码仓库最新的可用版本安装 `mdfmt`，尽管主分支的最新提交应该始终是一个稳定和可用的版本，但这不是安装和使用 `mdfmt` 的推荐方式。通过 `go install` 安装的 `mdfmt` 版本输出将显示默认版本号（default-version）。
 
-## Usage
+## 使用
 
 ```
 $ mdfmt -h
@@ -63,7 +63,7 @@ Flags:
   -w, --write     write result to (source) file instead of stdout
 ```
 
-## Thanks
+## 感谢
 
 * CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
 * The specification follows [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
