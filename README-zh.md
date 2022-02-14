@@ -27,7 +27,7 @@ brew install elliotxx/tap/mdfmt
 使用 Go 1.17+ 版本，你可以通过 `go install` 直接从源码安装 `mdfmt`：
 
 ```
-go install github.com/elliotxx/mdfmt@latest
+go install github.com/elliotxx/mdfmt/cmd/mdfmt@latest
 ```
 
 *注意*: 你将基于代码仓库最新的可用版本安装 `mdfmt`，尽管主分支的最新提交应该始终是一个稳定和可用的版本，但这不是安装和使用 `mdfmt` 的推荐方式。通过 `go install` 安装的 `mdfmt` 版本输出将显示默认版本号（default-version）。
