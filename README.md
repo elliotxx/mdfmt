@@ -68,6 +68,6 @@ Flags:
 
 ## Thanks
 
-* CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
+* The CLI Template uses [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
 * The specification follows [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
 * The Markdown engine uses [lute](https://github.com/88250/lute), cool!
