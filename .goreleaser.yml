@@ -37,6 +37,10 @@ release:
     name: mdfmt
   draft: false
   footer: |
+    ## Docker Images
+    * `elliotxx/mdfmt:{{ .Tag }}`
+    * `elliotxx/mdfmt:{{ .Tag }}-arm64`
+
     ## Thanks!
 
 dockers:
