@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"runtime"
+	"runtime/debug"
 	"time"
 
 	"gopkg.in/yaml.v3"
@@ -16,21 +17,37 @@ import (
 	git "github.com/elliotxx/gulu/gitutil"
 )
 
-var info = &Info{
-	ReleaseVersion: "default-version",
-	GitInfo: &GitInfo{
-		LatestTag: "default-tag",
-		Commit:    "default-commit",
-		TreeState: "default-tree-state",
-	},
-	BuildInfo: &BuildInfo{
-		GoVersion: runtime.Version(),
-		GOOS:      runtime.GOOS,
-		GOARCH:    runtime.GOARCH,
-		NumCPU:    runtime.NumCPU(),
-		Compiler:  runtime.Compiler,
-		BuildTime: time.Now().Format("2006-01-02 15:04:05"),
-	},
+var info = NewMainOrDefaultVersionInfo()
+
+func NewMainOrDefaultVersionInfo() *Info {
+	v := NewDefaultVersionInfo()
+
+	if i, ok := debug.ReadBuildInfo(); ok {
+		mod := &i.Main
+		if mod.Replace != nil {
+			mod = mod.Replace
+		}
+
+		if mod.Version != "(devel)" {
+			v.ReleaseVersion = mod.Version
+		}
+	}
+
+	return v
+}
+
+func NewDefaultVersionInfo() *Info {
+	return &Info{
+		ReleaseVersion: "default-version",
+		BuildInfo: &BuildInfo{
+			GoVersion: runtime.Version(),
+			GOOS:      runtime.GOOS,
+			GOARCH:    runtime.GOARCH,
+			NumCPU:    runtime.NumCPU(),
+			Compiler:  runtime.Compiler,
+			BuildTime: time.Now().Format("2006-01-02 15:04:05"),
+		},
+	}
 }
 
 // Info contains versioning information.
@@ -52,7 +69,7 @@ type Info struct {
 //    GitTreeState - "clean" indicates no changes since the git commit id
 //        "dirty" indicates source code changes after the git commit id
 type GitInfo struct {
-	LatestTag string `json:"latestTag" yaml:"latestTag"`                     // Such as "v1.2.3"
+	LatestTag string `json:"latestTag,omitempty" yaml:"latestTag,omitempty"` // Such as "v1.2.3"
 	Commit    string `json:"commit,omitempty" yaml:"commit,omitempty"`       // Such as "3836f8770ab8f488356b2129f42f2ae5c1134bb0"
 	TreeState string `json:"treeState,omitempty" yaml:"treeState,omitempty"` // Such as "clean", "dirty"
 }
