@@ -1,3 +1,5 @@
+GOSOURCE_PATHS ?= ./pkg/md/...
+
 include go.mk
 
 

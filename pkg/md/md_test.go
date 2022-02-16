@@ -45,6 +45,20 @@ func TestIsMarkdownFile(t *testing.T) {
 			},
 			want: false,
 		},
+		{
+			name: "fail-as-not-exist",
+			args: args{
+				filename: "./testdata/hello-fail.txt",
+			},
+			want: false,
+		},
+		{
+			name: "fail-as-dir",
+			args: args{
+				filename: "./testdata/",
+			},
+			want: false,
+		},
 	}
 
 	for _, tt := range tests {
@@ -102,12 +116,28 @@ func TestProcessMDFile(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "success",
+			name: "t1",
 			args: args{
 				filePath: "./testdata/hello.md",
 				write:    false,
 			},
 			wantErr: false,
+		},
+		{
+			name: "t2",
+			args: args{
+				filePath: "./testdata/hello-correct.md",
+				write:    true,
+			},
+			wantErr: false,
+		},
+		{
+			name: "t3",
+			args: args{
+				filePath: "./testdata/hello-not-exist.md",
+				write:    true,
+			},
+			wantErr: true,
 		},
 	}
 	for _, tt := range tests {
