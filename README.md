@@ -8,6 +8,10 @@
 
 > A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.
 
+<p align="center">
+  <img src="assets/demo.svg">
+</p>
+
 ## Language
 
 [English](https://github.com/elliotxx/mdfmt/blob/master/README.md) | [简体中文](https://github.com/elliotxx/mdfmt/blob/master/README-zh.md)

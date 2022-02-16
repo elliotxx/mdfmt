@@ -8,6 +8,10 @@
 
 > 一款 Markdown 格式化工具，和 gofmt 比较类似，不过格式化的对象是 Markdown 文本
 
+<p align="center">
+  <img src="assets/demo.svg">
+</p>
+
 ## 语言
 
 [English](https://github.com/elliotxx/mdfmt/blob/master/README.md) | [简体中文](https://github.com/elliotxx/mdfmt/blob/master/README-zh.md)
