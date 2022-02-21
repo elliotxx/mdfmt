@@ -6,7 +6,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/elliotxx/mdfmt.svg)](https://pkg.go.dev/github.com/elliotxx/mdfmt)
 [![Coverage Status](https://coveralls.io/repos/github/elliotxx/mdfmt/badge.svg)](https://coveralls.io/github/elliotxx/mdfmt)
 
-> 一款 Markdown 格式化工具，和 gofmt 比较类似，不过格式化的对象是 Markdown 文本
+> 💡 一款 Markdown 格式化工具，和 gofmt 比较类似，不过格式化的对象是 Markdown 文本
 
 <p align="center">
   <img src="assets/demo.svg">

@@ -6,7 +6,7 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/elliotxx/mdfmt.svg)](https://pkg.go.dev/github.com/elliotxx/mdfmt)
 [![Coverage Status](https://coveralls.io/repos/github/elliotxx/mdfmt/badge.svg)](https://coveralls.io/github/elliotxx/mdfmt)
 
-> A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.
+> 💡 A Markdown formatter that follow the CommonMark. Like gofmt, but for Markdown.
 
 <p align="center">
   <img src="assets/demo.svg">
