@@ -20,13 +20,22 @@ var (
 		# Format specified Markdown file, and write to stdout
 		mdfmt README.md
 
-		# Format and rewrite specified Markdown file
+		# Format and rewrite for specified Markdown file
 		mdfmt -w README.md
+
+		# Display diffs instead of rewriting Markdown files
+		mdfmt -d README.md
+
+		# Format, rewrite, and display diffs for specified Markdown file
+		mdfmt -d -w README.md
 
 		# Format and rewrite all Markdown file in current directory
 		mdfmt -w *.md
 
-		# Format and rewrite Markdown file and directory
+		# Recursive format and rewrite all Markdown file in current directory
+		mdfmt -w .
+
+		# Format and rewrite the specified Markdown file and directory
 		mdfmt -w README.md testdir/
 
 		# Format stdin to stdout
@@ -40,6 +49,7 @@ var (
 type Options struct {
 	ShowVersion bool
 	Write       bool
+	Diff        bool
 }
 
 // NewEncryptOptions returns a new EncryptOptions instance
@@ -64,12 +74,15 @@ func configureCLI() *cobra.Command {
 
 			// Process input
 			if len(args) == 0 {
-				return md.FormatMarkdown(os.Stdin, os.Stdout)
+				// Stdin
+				err = md.FormatMarkdown(os.Stdin, os.Stdout)
+				return err
 			}
 			for _, p := range args {
+				// File or directory
 				err = filepath.WalkDir(p, func(path string, d fs.DirEntry, _ error) error {
 					if !d.IsDir() && md.IsMarkdownFile(path) {
-						return md.ProcessMDFile(path, o.Write)
+						return md.ProcessMDFile(path, o.Write, o.Diff)
 					}
 					return nil
 				})
@@ -84,6 +97,7 @@ func configureCLI() *cobra.Command {
 
 	rootCmd.Flags().BoolVarP(&o.ShowVersion, "version", "V", false, "show version info")
 	rootCmd.Flags().BoolVarP(&o.Write, "write", "w", false, "write result to (source) file instead of stdout")
+	rootCmd.Flags().BoolVarP(&o.Diff, "diff", "d", false, "display diffs instead of rewriting files")
 
 	return rootCmd
 }

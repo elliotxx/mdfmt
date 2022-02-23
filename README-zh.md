@@ -49,13 +49,22 @@ Examples:
   # Format specified Markdown file, and write to stdout
   mdfmt README.md
   
-  # Format and rewrite specified Markdown file
+  # Format and rewrite for specified Markdown file
   mdfmt -w README.md
+  
+  # Display diffs instead of rewriting Markdown files
+  mdfmt -d README.md
+  
+  # Format, rewrite, and display diffs for specified Markdown file
+  mdfmt -d -w README.md
   
   # Format and rewrite all Markdown file in current directory
   mdfmt -w *.md
   
-  # Format and rewrite Markdown file and directory
+  # Recursive format and rewrite all Markdown file in current directory
+  mdfmt -w .
+  
+  # Format and rewrite the specified Markdown file and directory
   mdfmt -w README.md testdir/
   
   # Format stdin to stdout
@@ -65,6 +74,7 @@ Examples:
   mdfmt -V
 
 Flags:
+  -d, --diff      display diffs instead of rewriting files
   -h, --help      help for mdfmt
   -V, --version   show version info
   -w, --write     write result to (source) file instead of stdout

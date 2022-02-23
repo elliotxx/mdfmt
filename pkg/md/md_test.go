@@ -3,6 +3,7 @@ package md
 import (
 	"bytes"
 	"io"
+	"os"
 	"strings"
 	"testing"
 )
@@ -105,9 +106,15 @@ func TestFormatMarkdown(t *testing.T) {
 }
 
 func TestProcessMDFile(t *testing.T) {
+	mockMDFile := "./testdata/hello-temp.md"
+	_ = os.WriteFile(mockMDFile, []byte("# Hello World"), 0644)
+
+	defer os.Remove(mockMDFile)
+
 	type args struct {
 		filePath string
 		write    bool
+		diff     bool
 	}
 
 	tests := []struct {
@@ -116,33 +123,45 @@ func TestProcessMDFile(t *testing.T) {
 		wantErr bool
 	}{
 		{
-			name: "t1",
+			name: "happy-path",
 			args: args{
 				filePath: "./testdata/hello.md",
 				write:    false,
+				diff:     false,
 			},
 			wantErr: false,
 		},
 		{
-			name: "t2",
-			args: args{
-				filePath: "./testdata/hello-correct.md",
-				write:    true,
-			},
-			wantErr: false,
-		},
-		{
-			name: "t3",
+			name: "md-file-not-exist",
 			args: args{
 				filePath: "./testdata/hello-not-exist.md",
 				write:    true,
+				diff:     false,
 			},
 			wantErr: true,
+		},
+		{
+			name: "diff",
+			args: args{
+				filePath: "./testdata/hello.md",
+				write:    false,
+				diff:     true,
+			},
+			wantErr: false,
+		},
+		{
+			name: "write",
+			args: args{
+				filePath: mockMDFile,
+				write:    true,
+				diff:     false,
+			},
+			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := ProcessMDFile(tt.args.filePath, tt.args.write); (err != nil) != tt.wantErr {
+			if err := ProcessMDFile(tt.args.filePath, tt.args.write, tt.args.diff); (err != nil) != tt.wantErr {
 				t.Errorf("ProcessMDFile() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
