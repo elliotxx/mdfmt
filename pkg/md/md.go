@@ -71,7 +71,7 @@ func FormatMarkdown(in io.Reader, out io.Writer) (err error) {
 }
 
 // ProcessMDFile formats markdown file.
-func ProcessMDFile(filePath string, write bool, diff bool) error {
+func ProcessMDFile(filePath string, write, diff, list bool) error {
 	// Get Reader and Source
 	source, err := os.ReadFile(filePath)
 	if err != nil {
@@ -91,6 +91,10 @@ func ProcessMDFile(filePath string, write bool, diff bool) error {
 	target := out.Bytes()
 
 	if !bytes.Equal(source, target) {
+		// List
+		if list {
+			os.Stdout.WriteString(filePath + "\n")
+		}
 		// Write
 		if write {
 			info, err := os.Stat(filePath)
@@ -121,7 +125,7 @@ func ProcessMDFile(filePath string, write bool, diff bool) error {
 		}
 	}
 
-	if !write && !diff {
+	if !write && !diff && !list {
 		_, err = os.Stdout.Write(target)
 	}
 

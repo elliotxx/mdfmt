@@ -115,6 +115,7 @@ func TestProcessMDFile(t *testing.T) {
 		filePath string
 		write    bool
 		diff     bool
+		list     bool
 	}
 
 	tests := []struct {
@@ -128,6 +129,7 @@ func TestProcessMDFile(t *testing.T) {
 				filePath: "./testdata/hello.md",
 				write:    false,
 				diff:     false,
+				list:     false,
 			},
 			wantErr: false,
 		},
@@ -137,6 +139,7 @@ func TestProcessMDFile(t *testing.T) {
 				filePath: "./testdata/hello-not-exist.md",
 				write:    true,
 				diff:     false,
+				list:     false,
 			},
 			wantErr: true,
 		},
@@ -146,6 +149,7 @@ func TestProcessMDFile(t *testing.T) {
 				filePath: "./testdata/hello.md",
 				write:    false,
 				diff:     true,
+				list:     false,
 			},
 			wantErr: false,
 		},
@@ -155,13 +159,24 @@ func TestProcessMDFile(t *testing.T) {
 				filePath: mockMDFile,
 				write:    true,
 				diff:     false,
+				list:     false,
+			},
+			wantErr: false,
+		},
+		{
+			name: "list",
+			args: args{
+				filePath: "./testdata/hello.md",
+				write:    false,
+				diff:     false,
+				list:     true,
 			},
 			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := ProcessMDFile(tt.args.filePath, tt.args.write, tt.args.diff); (err != nil) != tt.wantErr {
+			if err := ProcessMDFile(tt.args.filePath, tt.args.write, tt.args.diff, tt.args.list); (err != nil) != tt.wantErr {
 				t.Errorf("ProcessMDFile() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})

@@ -55,6 +55,9 @@ Examples:
   # Display diffs instead of rewriting Markdown files
   mdfmt -d README.md
   
+  # List files whose formatting differs from mdfmt's
+  mdfmt -l .
+  
   # Format, rewrite, and display diffs for specified Markdown file
   mdfmt -d -w README.md
   
@@ -76,6 +79,7 @@ Examples:
 Flags:
   -d, --diff      display diffs instead of rewriting files
   -h, --help      help for mdfmt
+  -l, --list      list files whose formatting differs from mdfmt's
   -V, --version   show version info
   -w, --write     write result to (source) file instead of stdout
 ```

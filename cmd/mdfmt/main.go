@@ -26,6 +26,9 @@ var (
 		# Display diffs instead of rewriting Markdown files
 		mdfmt -d README.md
 
+		# List files whose formatting differs from mdfmt's
+		mdfmt -l .
+
 		# Format, rewrite, and display diffs for specified Markdown file
 		mdfmt -d -w README.md
 
@@ -50,6 +53,7 @@ type Options struct {
 	ShowVersion bool
 	Write       bool
 	Diff        bool
+	List        bool
 }
 
 // NewEncryptOptions returns a new EncryptOptions instance
@@ -82,7 +86,7 @@ func configureCLI() *cobra.Command {
 				// File or directory
 				err = filepath.WalkDir(p, func(path string, d fs.DirEntry, _ error) error {
 					if !d.IsDir() && md.IsMarkdownFile(path) {
-						return md.ProcessMDFile(path, o.Write, o.Diff)
+						return md.ProcessMDFile(path, o.Write, o.Diff, o.List)
 					}
 					return nil
 				})
@@ -98,6 +102,7 @@ func configureCLI() *cobra.Command {
 	rootCmd.Flags().BoolVarP(&o.ShowVersion, "version", "V", false, "show version info")
 	rootCmd.Flags().BoolVarP(&o.Write, "write", "w", false, "write result to (source) file instead of stdout")
 	rootCmd.Flags().BoolVarP(&o.Diff, "diff", "d", false, "display diffs instead of rewriting files")
+	rootCmd.Flags().BoolVarP(&o.List, "list", "l", false, "list files whose formatting differs from mdfmt's")
 
 	return rootCmd
 }
