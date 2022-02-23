@@ -18,6 +18,10 @@
 
 ## 安装
 
+### 二进制安装（跨平台: windows, linux, mac ...）
+
+从二进制安装，只需从 `mdfmt` 的 [发布页面](https://github.com/elliotxxx/mdfmt/releases) 下载对应平台的二进制文件，然后将二进制文件放在命令行能访问到的目录中即可。
+
 ### Homebrew
 
 `elliotxx/tap` 有 MacOS 和 GNU/Linux 的预编译二进制版本可用：
@@ -35,6 +39,38 @@ go install github.com/elliotxx/mdfmt/cmd/mdfmt@latest
 ```
 
 *注意*: 你将基于代码仓库最新的可用版本安装 `mdfmt`，尽管主分支的最新提交应该始终是一个稳定和可用的版本，但这不是安装和使用 `mdfmt` 的推荐方式。通过 `go install` 安装的 `mdfmt` 版本输出将显示默认版本号（default-version）。
+
+### Docker
+
+Docker 用户可以用以下命令拉取 `mdfmt` 的镜像：
+
+```
+docker pull elliotxx/mdfmt
+```
+
+验证:
+
+```bash
+$ docker run --rm elliotxx/mdfmt:latest mdfmt -h
+...
+$ docker run --rm elliotxx/mdfmt:latest mdfmt -V
+...
+$ docker run -v $PWD:$PWD --rm elliotxx/mdfmt:latest mdfmt -d /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md
+diff -u /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md.orig /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md
+--- /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md.orig
++++ /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md
+@@ -1,6 +1,7 @@
+ # hello
++
+ > hello
+
+-|name|age|
+-|--|--|
+-|Mike|18|
++| name | age |
++| ---- | --- |
++| Mike | 18  |
+```
 
 ## 使用
 

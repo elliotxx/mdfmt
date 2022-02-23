@@ -18,6 +18,10 @@
 
 ## Intallation
 
+### Binary (Cross-platform: windows, linux, mac ...)
+
+To get the binary just download the latest release for your OS/Arch from the [release page](https://github.com/elliotxx/mdfmt/releases) and put the binary somewhere convenient.
+
 ### Homebrew
 
 The `elliotxx/tap` has macOS and GNU/Linux pre-built binaries available:
@@ -35,6 +39,38 @@ go install github.com/elliotxx/mdfmt/cmd/mdfmt@latest
 ```
 
 *NOTE*: This will install `mdfmt` based on the latest available code base. Even though the goal is that the latest commit on the main branch should always be a stable and usable version, this is not the recommended way to install and use `mdfmt`. The version output will show `mdfmt` version (default-version) for go install based builds.
+
+### Docker
+
+Docker users can use the following commands to pull the latest image of the `mdfmt`:
+
+```
+docker pull elliotxx/mdfmt
+```
+
+Verification:
+
+```bash
+$ docker run --rm elliotxx/mdfmt:latest mdfmt -h
+...
+$ docker run --rm elliotxx/mdfmt:latest mdfmt -V
+...
+$ docker run -v $PWD:$PWD --rm elliotxx/mdfmt:latest mdfmt -d /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md
+diff -u /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md.orig /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md
+--- /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md.orig
++++ /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md
+@@ -1,6 +1,7 @@
+ # hello
++
+ > hello
+
+-|name|age|
+-|--|--|
+-|Mike|18|
++| name | age |
++| ---- | --- |
++| Mike | 18  |
+```
 
 ## Usage
 
