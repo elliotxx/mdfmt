@@ -9,6 +9,7 @@ import (
 	"github.com/elliotxx/mdfmt/pkg/md"
 	"github.com/elliotxx/mdfmt/pkg/version"
 	"github.com/spf13/cobra"
+	"k8s.io/klog/v2"
 	"k8s.io/kubectl/pkg/util/i18n"
 	"k8s.io/kubectl/pkg/util/templates"
 )
@@ -84,8 +85,11 @@ func configureCLI() *cobra.Command {
 			}
 			for _, p := range args {
 				// File or directory
-				err = filepath.WalkDir(p, func(path string, d fs.DirEntry, _ error) error {
-					if !d.IsDir() && md.IsMarkdownFile(path) {
+				err = filepath.WalkDir(p, func(path string, d fs.DirEntry, err error) error {
+					if err != nil {
+						klog.Warning(err)
+					}
+					if d != nil && !d.IsDir() && md.IsMarkdownFile(path) {
 						return md.ProcessMDFile(path, o.Write, o.Diff, o.List)
 					}
 					return nil
