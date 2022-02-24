@@ -2,3 +2,5 @@ dist/
 build/
 coverage.out
 tmp/
+__debug_bin
+.vscode/

@@ -7,9 +7,11 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"runtime/debug"
 	"strings"
 
 	"github.com/88250/lute"
+	"github.com/elliotxx/mdfmt/pkg/merrors"
 	"github.com/pkg/diff"
 	"github.com/pkg/diff/write"
 )
@@ -51,6 +53,12 @@ func IsMarkdownFile(p string) bool {
 
 // FormatMarkdown formats markdown from reader to writer.
 func FormatMarkdown(in io.Reader, out io.Writer) (err error) {
+	defer func() {
+		if r := recover(); r != nil {
+			err = merrors.NewCrash(fmt.Errorf("%v", r), string(debug.Stack()))
+		}
+	}()
+
 	// Read
 	markdownContent, err := ioutil.ReadAll(in)
 	if err != nil {
