@@ -12,6 +12,10 @@
   <img src="assets/demo.svg">
 </p>
 
+最近在频繁用 Markdown 写文档，内容一多就不好管理格式，经常看到一坨坨的 Markdown 内容挤在一起，导致有强迫症的我的眉头也经常挤在一起。
+
+好在发现了强大的结构化的 Markdown 引擎 [lute](https://github.com/88250/lute)，它对中文语境的支持也很好，于是借助 lute 引擎开发了这款 Markdown 格式化命令行工具 [mdfmt](https://github.com/elliotxx/mdfmt)，欢迎大家试用 👏🏻
+
 ## 📜 语言
 
 [English](https://github.com/elliotxx/mdfmt/blob/master/README.md) | [简体中文](https://github.com/elliotxx/mdfmt/blob/master/README-zh.md)

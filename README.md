@@ -12,6 +12,10 @@
   <img src="assets/demo.svg">
 </p>
 
+Recently, I have frequently used Markdown to write documents, and it is difficult to manage the format when there are too many contents. I often see lumps of markdown contents crowded together, it caused my eyebrows to be crowded together.
+
+Fortunately, the powerful structured Markdown engine [lute](https://github.com/88250/lute), its support for Chinese context is also very good, so I developed this Markdown formatting command line tool [mdfmt](https://github.com/elliotXX/mdfmt) with the lute engine, welcome everyone to try 👏🏻
+
 ## 📜️ Language
 
 [English](https://github.com/elliotxx/mdfmt/blob/master/README.md) | [简体中文](https://github.com/elliotxx/mdfmt/blob/master/README-zh.md)
