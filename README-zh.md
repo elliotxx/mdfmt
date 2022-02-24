@@ -16,6 +16,15 @@
 
 [English](https://github.com/elliotxx/mdfmt/blob/master/README.md) | [简体中文](https://github.com/elliotxx/mdfmt/blob/master/README-zh.md)
 
+## ✨ 特性
+
+* 支持多种输入：标准输入、文件、目录、通配符，其中指定目录会递归格式化目录下所有 Markdown 文件
+* 支持重写：将结果写入（源）文件而不是标准输出
+* 支持显示差异：显示 Markdown 格式化前后的差异（diff），而不是重写文件
+* 支持列出格式化的文件
+* 跨平台：Linux, Windows, Mac
+* 一键安装：支持通过 `Homebrew`、`go install` 等方式一键安装 `mdfmt`
+
 ## 🛠️ 安装
 
 ### 二进制安装（跨平台: windows, linux, mac ...）
@@ -72,7 +81,7 @@ diff -u /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md.orig /Users/yym
 +| Mike | 18  |
 ```
 
-## ✨ 使用
+## ⚡ 使用
 
 ```
 $ mdfmt -h

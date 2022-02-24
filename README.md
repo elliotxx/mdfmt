@@ -16,7 +16,16 @@
 
 [English](https://github.com/elliotxx/mdfmt/blob/master/README.md) | [简体中文](https://github.com/elliotxx/mdfmt/blob/master/README-zh.md)
 
-## 🛠️ Intallation
+## ✨ Features
+
+* **Support multiple inputs**: standard input, file, directory and wildcard. The specified directory will recursively format all markdown files under the directory
+* **Support Rewriting**: write the results to (source) files instead of standard output
+* **Support display difference**: display the difference before and after markdown formatting, Instead of rewriting files
+* **Support listing formatted files**
+* **Cross platform**: Linux, windows, Mac
+* **One-click installation**: support one-click installation `mdfmt` through `Homebrew`, `go install`, etc.
+
+## 🛠️ Installation
 
 ### Binary (Cross-platform: windows, linux, mac ...)
 
@@ -72,7 +81,7 @@ diff -u /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md.orig /Users/yym
 +| Mike | 18  |
 ```
 
-## ✨ Usage
+## ⚡ Usage
 
 ```
 $ mdfmt -h
