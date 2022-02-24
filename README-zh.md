@@ -131,6 +131,6 @@ Flags:
 
 ## 🙏 感谢
 
-* CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
-* The specification follows [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
-* The Markdown engine uses [lute](https://github.com/88250/lute), cool!
+* 命令行工具模板来自 [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
+* Markdown 规范遵循 [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
+* Markdown 引擎使用 [88250/lute](https://github.com/88250/lute), 很酷!
