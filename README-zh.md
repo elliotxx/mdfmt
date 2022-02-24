@@ -135,6 +135,6 @@ Flags:
 
 ## 🙏 感谢
 
+* Markdown 引擎使用 [88250/lute](https://github.com/88250/lute), 很酷!
 * 命令行工具模板来自 [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
 * Markdown 规范遵循 [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
-* Markdown 引擎使用 [88250/lute](https://github.com/88250/lute), 很酷!
