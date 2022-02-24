@@ -12,11 +12,11 @@
   <img src="assets/demo.svg">
 </p>
 
-## 语言
+## 📜 语言
 
 [English](https://github.com/elliotxx/mdfmt/blob/master/README.md) | [简体中文](https://github.com/elliotxx/mdfmt/blob/master/README-zh.md)
 
-## 安装
+## 🛠️ 安装
 
 ### 二进制安装（跨平台: windows, linux, mac ...）
 
@@ -72,7 +72,7 @@ diff -u /Users/yym/workspace/mdfmt/pkg/md/testdata/hello-more.md.orig /Users/yym
 +| Mike | 18  |
 ```
 
-## 使用
+## ✨ 使用
 
 ```
 $ mdfmt -h
@@ -120,7 +120,7 @@ Flags:
   -w, --write     write result to (source) file instead of stdout
 ```
 
-## 感谢
+## 🙏 感谢
 
 * CLI Template from [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
 * The specification follows [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
