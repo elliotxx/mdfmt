@@ -59,13 +59,13 @@ type Options struct {
 	Verbose     bool
 }
 
-// NewEncryptOptions returns a new EncryptOptions instance
-func NewMainOptions() *Options {
+// NewOptions returns a new Options instance
+func NewOptions() *Options {
 	return &Options{}
 }
 
 func configureCLI() *cobra.Command {
-	o := NewMainOptions()
+	o := NewOptions()
 	rootCmd := &cobra.Command{
 		Use:           "mdfmt [flags] [path ...]",
 		Short:         cmdShort,
