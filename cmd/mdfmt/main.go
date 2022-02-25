@@ -51,19 +51,6 @@ var (
 		`))
 )
 
-type Options struct {
-	ShowVersion bool
-	Write       bool
-	Diff        bool
-	List        bool
-	Verbose     bool
-}
-
-// NewOptions returns a new Options instance
-func NewOptions() *Options {
-	return &Options{}
-}
-
 func configureCLI() *cobra.Command {
 	o := NewOptions()
 	rootCmd := &cobra.Command{
@@ -108,7 +95,7 @@ func configureCLI() *cobra.Command {
 					}()
 
 					if d != nil && !d.IsDir() && md.IsMarkdownFile(path) {
-						err2 = md.ProcessMDFile(path, o.Write, o.Diff, o.List)
+						err2 = ProcessMDFile(path, o.Write, o.Diff, o.List)
 					}
 					return
 				})
