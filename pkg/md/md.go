@@ -66,7 +66,9 @@ func FormatMarkdown(in io.Reader, out io.Writer) (err error) {
 	}
 
 	// Format
-	luteEngine := lute.New()
+	luteEngine := lute.New(func(l *lute.Lute) {
+		l.RenderOptions.AutoSpace = true
+	})
 	formatContent := luteEngine.Format("md", markdownContent)
 
 	// Output
