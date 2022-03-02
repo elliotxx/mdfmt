@@ -140,3 +140,4 @@ Flags:
 * Markdown 引擎使用 [88250/lute](https://github.com/88250/lute), 很酷!
 * 命令行工具模板来自 [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
 * Markdown 规范遵循 [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
+* 使用 [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli) 提交漂亮的 git commit message

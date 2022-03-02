@@ -140,3 +140,4 @@ Flags:
 * The Markdown engine uses [lute](https://github.com/88250/lute), cool!
 * The CLI Template uses [elliotxx/go-cli-prototype](https://github.com/elliotxx/go-cli-prototype)
 * The specification follows [GFM](https://github.github.com/gfm/)/[CommonMark](https://commonmark.org/)
+* Pretty git commit message using [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)
