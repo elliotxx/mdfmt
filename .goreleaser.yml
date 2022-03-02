@@ -12,6 +12,17 @@ builds:
       - linux
       - windows
       - darwin
+    # 使用 ldflags="-s -w" 去掉符号表和调试信息，以减少发布包的大小
+    ldflags:
+      - -s -w
+    # upx 在部分 Mac 系统中会出现 killed 的报错，二进制无法正常工作，暂时不使用
+    # hooks:
+    #   post:
+    #    - upx -9 "{{ .Path }}"
+    # upx 在 windows amd64 上会报错，暂时不用
+    # ignore:
+    #   - goos: windows
+    #     goarch: arm64
     main: ./cmd/mdfmt
 archives:
   - replacements:
