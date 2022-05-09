@@ -35,7 +35,7 @@
 
 ### 二进制安装（跨平台: windows, linux, mac ...）
 
-从二进制安装，只需从 `mdfmt` 的 [发布页面](https://github.com/elliotxxx/mdfmt/releases) 下载对应平台的二进制文件，然后将二进制文件放在命令行能访问到的目录中即可。
+从二进制安装，只需从 `mdfmt` 的 [发布页面](https://github.com/elliotxx/mdfmt/releases) 下载对应平台的二进制文件，然后将二进制文件放在命令行能访问到的目录中即可。
 
 ### Homebrew
 
